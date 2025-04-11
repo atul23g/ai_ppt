@@ -12,12 +12,10 @@ import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import NavMain from "./nav-main";
 import { data } from "@/lib/constants";
+import RecentOpen from "./recent-open";
 // Make sure this is the correct path
 
-type Props = {
-  recentProjects: Project[];
-  user: User;
-};
+
 
 const AppSidebar = ({
   recentProjects,
@@ -53,9 +51,9 @@ const AppSidebar = ({
       </SidebarHeader>
 
       <SidebarContent className="px-3 mt-10 gap-y-6">
-      <NavMain items={data.navMain} />
+        <NavMain items={data.navMain} />
       </SidebarContent>
-
+        <RecentOpen recentProjects = {recentProjects}/>
       <SidebarFooter />
     </Sidebar>
   );

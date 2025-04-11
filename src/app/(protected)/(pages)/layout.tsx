@@ -3,6 +3,7 @@ import AppSidebar from '@/components/global/app-sidebar'
 import { redirect } from 'next/navigation'
 import React from 'react'
 import { SidebarProvider } from '@/components/ui/sidebar'
+import { getRecentProjects } from '@/actions/project'
 
 
 type Props = {
@@ -11,6 +12,7 @@ type Props = {
 }
 
 const Layout = async ({children}: Props) => {
+    const recentProjects = await getRecentProjects();
     //const recent Projects = await getRecentProjects();
     const checkUser = await onAuthenticateUser()
 
@@ -18,7 +20,11 @@ const Layout = async ({children}: Props) => {
         redirect('/sign-in')
     }
   return <SidebarProvider>
-        <AppSidebar></AppSidebar>
+        <AppSidebar 
+            user={checkUser.user}
+            recentProjects={recentProjects.data || []}>
+
+        </AppSidebar>
   </SidebarProvider>
 }
 export default Layout

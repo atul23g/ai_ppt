@@ -14,7 +14,6 @@ const NavMain = ({
   items,
 }: {
   items?: {
-    // Mark prop as optional with ?
     title: string;
     url: string;
     icon: React.FC<React.SVGProps<SVGSVGElement>>;
@@ -35,38 +34,23 @@ const NavMain = ({
   return (
     <SidebarGroup className="p-0">
       <SidebarMenu>
-        {items.map((item) => (
+        {items.map((item, idx) => (
           <SidebarMenuItem key={item.title}>
             <SidebarMenuButton
               asChild
               tooltip={item.title}
-              className={pathname.includes(item.url) ? "bg-background-80" : ""}
+              className={`${pathname.includes(item.url) && "bg-muted"}`}
             >
               <Link
                 href={item.url}
-                className={`text-lg ${
-                  pathname.includes(item.url) ? "font-bold" : ""
-                }`}
+                className={`text-lg ${pathname.includes(item.url) ? "font-bold" : ""}`}
               >
                 <item.icon className="text-lg" />
                 <span> {item.title}</span>
               </Link>
             </SidebarMenuButton>
-            {item.items && (
-              <SidebarMenu>
-                {item.items.map((nestedItem) => (
-                  <SidebarMenuItem key={nestedItem.title}>
-                    <SidebarMenuButton asChild>
-                      <Link href={nestedItem.url} className="text-lg">
-                        {nestedItem.title}
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            )}
           </SidebarMenuItem>
-        ))}
+        ))} {/* ✅ Fixed: removed extra closing braces and parentheses */}
       </SidebarMenu>
     </SidebarGroup>
   );
