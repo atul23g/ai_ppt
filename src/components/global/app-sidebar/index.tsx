@@ -13,6 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import NavMain from "./nav-main";
 import { data } from "@/lib/constants";
 import RecentOpen from "./recent-open";
+import NavFooter from "./nav-footer";
 // Make sure this is the correct path
 
 
@@ -54,7 +55,9 @@ const AppSidebar = ({
         <NavMain items={data.navMain} />
       </SidebarContent>
         <RecentOpen recentProjects = {recentProjects}/>
-      <SidebarFooter />
+      <SidebarFooter>
+        <NavFooter pirsmaUser={user}/> 
+      </SidebarFooter>
     </Sidebar>
   );
 };
