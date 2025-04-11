@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { Project } from "@prisma/client";
 import {
@@ -11,12 +12,16 @@ import { Button } from "@/components/ui/button";
 import { JsonValue } from "@prisma/client/runtime/library";
 import { toast } from "sonner";
 
+import { useSlideStore } from "@/store/useSlideStore";
+import { useRouter } from "next/navigation";
+
 type Props = {
   recentProjects: Project[];
 };
 
 const RecentOpen = ({ recentProjects }: Props) => {
     const router = useRouter()
+    const { setSlides } = useSlideStore();
     const handleClick = (projectId: string, slides: JsonValue)=> {
    
       
@@ -32,7 +37,7 @@ const RecentOpen = ({ recentProjects }: Props) => {
         }
         
         setSlides(JSON.parse(JSON.stringify(slides)))
-        router.pusth(`/presentation/${projectId}`)
+        router.push(`/presentation/${projectId}`)
       };
 
   return (
