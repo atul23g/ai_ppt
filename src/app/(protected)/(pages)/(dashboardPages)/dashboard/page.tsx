@@ -1,9 +1,11 @@
-import React from 'react'
-import { getAllProjects } from '@/actions/project'
-import NotFound from '@/components/global/not-found'
+import React from "react";
+import { getAllProjects } from "@/actions/project";
+import NotFound from "@/components/global/not-found";
+import Projects from "@/components/global/projects";
+import ProjectCard from "@/components/global/project-card";
 
 const DashboardPage = async () => {
-  const allProjects = await getAllProjects()
+  const allProjects = await getAllProjects();
 
   return (
     <div className="w-full flex flex-col gap-6 relative md:p-0 p-4">
@@ -17,11 +19,16 @@ const DashboardPage = async () => {
           </p>
         </div>
       </div>
-      {allProjects.data && allProjects.data. length > 0 ? '' : <NotFound />}
+      <ProjectCard />
+      {allProjects.data && allProjects.data.length > 0 ? (
+        <Projects projects={allProjects.data} />
+      ) : (
+        <NotFound />
+      )}
 
       {/* {projects}*/}
     </div>
-  )
-}
+  );
+};
 
-export default DashboardPage
+export default DashboardPage;
