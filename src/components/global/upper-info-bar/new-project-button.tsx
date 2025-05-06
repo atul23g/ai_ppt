@@ -11,11 +11,12 @@ const NewProjectButton = ({ user }: { user: User }) => {
 
   return (
     <Button
-      size="lg"
+      
       disabled={!user?.subscription}
       className="rounded-lg font-semibold"
+
       // Uncomment to enable navigation
-      // onClick={() => router.push('/create')}
+     onClick={() => router.push('/create-page')}
     >
       <Plus/>
       New Project

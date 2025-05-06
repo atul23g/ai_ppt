@@ -20,14 +20,12 @@ function Projects({ projects }: Props) {
         <ProjectCard
           key={project.id} // Fixed: `id` is not defined; use project.id
           title={project?.title}
-          projectid={project?.id}
+          projectId={project?.id}
           createdAt={project?.createdAt.toString()}
           isDelete={project?.isDeleted}
           slideData={project?.slides}
-          src={
-            project.thumbnail ||
-            "https://unsplash.com/photos/gray-and-black-laptop-computer-on-surface-Im7lZjxeLhg"
-          }
+          themeName={project.themeName}
+          
         />
       ))}
     </motion.div>
