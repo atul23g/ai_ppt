@@ -27,7 +27,7 @@ const Layout = async ({ children }: Props) => {
 
       <SidebarInset>
         <UpperInforBar user={checkUser.user} />
-        {children}
+        <div className="p-4">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

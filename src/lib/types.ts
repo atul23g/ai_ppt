@@ -55,3 +55,9 @@ export interface Slide {
   | 'codeBlock'
   | 'customButton'
   | 'tableOfContents';
+
+  export interface OutlineCard {
+    id: string;
+    title: string;
+    order: number;
+  }
